@@ -1,185 +1,136 @@
-# Spanish Context Trainer 🇪🇸
+# Spanish Context Trainer
 
-A Python-based Spanish learning system built around **contextual vocabulary, RAG, AI agents, and personalized learning**.
+A simple Spanish A1 vocabulary and grammar learning application built with Python, HTML, CSS, and JavaScript.
 
-The project is designed to transform structured Spanish vocabulary resources into a database that an AI agent can use to generate exercises.
+The project is based on contextual Spanish vocabulary and grammar material and aims to provide a practical way to explore vocabulary and practice it through interactive exercises.
 
-## 🎯 Project Goals
+## Project goals
 
-The main objective is to build a Spanish learning assistant.
+The first version focuses on three simple features:
 
-Instead of giving the AI model the entire vocabulary dataset, the system will use **Retrieval-Augmented Generation (RAG)** to retrieve only the vocabulary relevant to the current learning task.
+* **Vocabulary Explorer** — search and browse A1 vocabulary.
+* **Grammar Explorer** — browse A1 grammar concepts.
+* **Quiz** — practice vocabulary with interactive questions.
 
-The project follows a **modular architecture** inspired by **MVC**.
-
-## Repository Structure
-
-The planned project structure is :
+## Architecture
 
 ```text
-SPANISH-CONTEXT-TRAINER/
-│
-├── src/
-│   └── spanish_trainer/
-│       │
-│       ├── config/
-│       │
-│       ├── models/
-│       │
-│       ├── parsers/
-│       │
-│       ├── repositories/
-│       │
-│       ├── embeddings/
-│       │
-│       ├── vectorstore/
-│       │
-│       ├── rag/
-│       │
-│       ├── agent/
-│       │
-│       ├── services/
-│       │
-│       ├── controllers/
-│       │
-│       └── main.py
-│
-├── scripts/
-│   ├── import_vocabulary.py
-│   ├── build_embeddings.py
-│   └── rebuild_vectorstore.py
-│
-├── tests/
+spanish-context-trainer/
 │
 ├── data/
 │   ├── raw/
-│   ├── processed/
-│   ├── embeddings/
-│   ├── vectorstore/
-│   └── learning/
+│   │   └── A1/
+│   │
+│   └── processed/
+│       └── vocabulary.json
 │
-├── notebooks/
+├── parser/
+│   └── vocabulary_parser.py
 │
-├── README.md
-├── LICENSE
+├── web/
+│   ├── index.html
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   └── js/
+│       ├── app.js
+│       ├── vocabulary.js
+│       └── quiz.js
+│
+├── tests/
+│   └── test_vocabulary_parser.py
+│
 ├── .gitignore
-├── .env.example
+├── README.md
 └── pyproject.toml
 ```
 
-## Data Pipeline
-
-The vocabulary pipeline is designed as :
+## Data pipeline
 
 ```text
-TXT files
-   │
-   ▼
-Parser
-   │
-   ▼
-Structured vocabulary
-   │
-   ▼
-JSON
-   │
-   ▼
-Embeddings
-   │
-   ▼
-Vector Store
+Vocabulary TXT files
+        │
+        ▼
+Python parser
+        │
+        ▼
+vocabulary.json
+        │
+        ▼
+HTML / CSS / JavaScript
+        │
+        ├── Vocabulary Explorer
+        └── Quiz
 ```
 
-A vocabulary entry is represented as :
+Grammar data will follow a separate parsing process because its source files use a different structure from the vocabulary files.
+
+## Vocabulary data
+
+Vocabulary source files are organized by level, context, and source file.
+
+Each parsed vocabulary entry contains:
 
 ```json
 {
-    "id": "6b87f542-f418-5ce8-9029-093885941f72",
-    "word": "cerrar",
-    "type": "verbo",
+    "id": "...",
+    "word": "...",
+    "type": "...",
     "definition": "...",
     "example": "...",
     "level": "A1",
-    "context": "comprar-comida",
-    "source_file": "myfile.txt"
+    "context": "...",
+    "source_file": "..."
 }
 ```
 
-The stable `id` allows the same vocabulary item to be referenced by the JSON dataset, vector store, and learning database.
+Vocabulary IDs are deterministic UUIDs generated from the vocabulary entry's level, context, source file, and word.
 
-## RAG
+## Development roadmap
 
-The system will use **Retrieval-Augmented Generation** rather than placing the complete vocabulary database inside an LLM prompt.
+### Phase 1 — Data preparation
 
-The agent can use that retrieved context to construct an appropriate exercise.
+* [x] Define vocabulary data structure
+* [x] Create vocabulary parser
+* [ ] Parse the complete A1 vocabulary dataset
+* [ ] Validate parsed data
+* [ ] Add automated tests
 
-## AI Agent
+### Phase 2 — Web application
 
-The AI agent is intended to coordinate several specialized components :
+* [ ] Create HTML structure
+* [ ] Create application styling
+* [ ] Load vocabulary JSON
+* [ ] Build vocabulary search
+* [ ] Add context filtering
+* [ ] Add grammatical type filtering
 
-* Exercise generation ;
-* Answer correction ;
-* Difficulty selection ;
-* Learning state.
+### Phase 3 — Learning
 
-This information will eventually be used for adaptive learning and spaced repetition.
+* [ ] Create vocabulary quiz
+* [ ] Add score tracking
+* [ ] Store basic learning progress locally
+* [ ] Improve the user interface
 
-## Data Privacy & Copyright
+### Phase 4 — Grammar
 
-The project may use vocabulary material obtained from third-party educational resources for **personal study and development**.
+* [ ] Normalize A1 grammar source files
+* [ ] Create grammar parser
+* [ ] Generate grammar JSON
+* [ ] Build Grammar Explorer
 
-Third-party educational content is **not included in this public repository**.
-
-Private data may include:
-
-```text
-data/raw/
-data/processed/
-data/embeddings/
-data/vectorstore/
-data/learning/
-```
-
-These directories are excluded from version control.
-
-The public repository contains the application code and architecture, while private educational data remains local.
-
-## Project Development
-
-The project is being developed incrementally.
-The goal is to keep each component independent and testable.
-
-## Planned Technology Stack
-
-The exact technologies may evolve during development.
-
-### Core
+## Technologies
 
 * Python
-* `pathlib`
-* `json`
-* `dataclasses` / Pydantic
+* JSON
+* HTML
+* CSS
+* JavaScript
 * pytest
 
-### Data
+## Privacy and source data
 
-* JSON during the initial development phase
-* SQLite for learner progress
-* Vector database for semantic retrieval
+The original educational source material is kept private and is not included in the public repository.
 
-### AI
-
-* Embedding model
-* Large Language Model
-* RAG pipeline
-* AI agent
-
-### Possible future interfaces
-
-* CLI
-* Web application
-* Streamlit interface
-
-## License
-
-Third-party educational content is **not part of this repository** and remains subject to its original copyright and licensing conditions.
+The repository contains the software used to process and present the data rather than the source educational content itself.

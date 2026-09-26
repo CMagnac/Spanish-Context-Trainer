@@ -1,2 +1,24 @@
+# Private educational data
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Test/cache
+.pytest_cache/
+
+# Temporary files
 tmp/
-data/
