@@ -1,0 +1,576 @@
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --color-primary: #003366;
+    --color-primary-light: #eaf2f8;
+
+    --color-background: #f7f9fc;
+    --color-surface: #ffffff;
+
+    --color-text: #1f2933;
+    --color-text-light: #667085;
+
+    --color-border: #d9e1ea;
+
+    --color-success: #2e7d32;
+    --color-danger: #c62828;
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+
+    --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    --max-width: 1200px;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    min-height: 70px;
+
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    color: var(--color-primary);
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.nav-button {
+    border: none;
+    background: transparent;
+
+    color: var(--color-text-light);
+
+    padding: 10px 16px;
+
+    border-radius: var(--radius-small);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.nav-button:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+
+.nav-button.active {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.app-container {
+    max-width: var(--max-width);
+
+    margin: 0 auto;
+
+    padding: 50px 24px 70px;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.app-section {
+    display: block;
+}
+
+
+.app-section[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header {
+    margin-bottom: 35px;
+}
+
+
+.section-header h1 {
+    color: var(--color-primary);
+
+    font-size: 2rem;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.section-header p {
+    color: var(--color-text-light);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   VOCABULARY CONTROLS
+   ========================================================= */
+
+.vocabulary-controls {
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-small);
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-container {
+    margin-bottom: 22px;
+}
+
+
+.search-container label,
+.filter label {
+    display: block;
+
+    color: var(--color-text);
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+
+.search-container input,
+.filter select {
+    width: 100%;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+
+    background-color: white;
+
+    color: var(--color-text);
+
+    font-size: 0.95rem;
+
+    padding: 11px 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.search-container input:focus,
+.filter select:focus {
+    border-color: var(--color-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 51, 102, 0.1);
+}
+
+
+.search-container input::placeholder {
+    color: #98a2b3;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.filter-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   RESULTS INFORMATION
+   ========================================================= */
+
+.results-information {
+    margin-bottom: 18px;
+}
+
+
+.results-information p {
+    color: var(--color-text-light);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   VOCABULARY LIST
+   ========================================================= */
+
+.vocabulary-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   VOCABULARY CARD
+   ========================================================= */
+
+.vocabulary-card {
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.vocabulary-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-medium);
+}
+
+
+.vocabulary-card h2 {
+    color: var(--color-primary);
+
+    font-size: 1.45rem;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   WORD TYPE
+   ========================================================= */
+
+.word-type {
+    display: inline-block;
+
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+
+    border-radius: 20px;
+
+    padding: 3px 10px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   DEFINITION
+   ========================================================= */
+
+.definition {
+    color: var(--color-text);
+
+    font-size: 0.95rem;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   EXAMPLE
+   ========================================================= */
+
+.example {
+    border-left: 3px solid var(--color-primary);
+
+    padding-left: 14px;
+
+    color: var(--color-text-light);
+
+    font-size: 0.9rem;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+    text-align: center;
+
+    background-color: var(--color-surface);
+
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-medium);
+
+    padding: 60px 20px;
+
+    margin-top: 20px;
+}
+
+
+.empty-state h2 {
+    color: var(--color-primary);
+
+    font-size: 1.3rem;
+
+    margin-bottom: 8px;
+}
+
+
+.empty-state p {
+    color: var(--color-text-light);
+}
+
+
+/* =========================================================
+   HIDDEN UTILITY
+   ========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   GRAMMAR / QUIZ PLACEHOLDERS
+   ========================================================= */
+
+#grammar-list,
+#quiz-container {
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    min-height: 200px;
+
+    padding: 30px;
+
+    box-shadow: var(--shadow-small);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    border-top: 1px solid var(--color-border);
+
+    background-color: var(--color-surface);
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    color: var(--color-text-light);
+
+    font-size: 0.85rem;
+}
+
+
+.site-footer p + p {
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .header-container {
+        flex-direction: column;
+
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        gap: 12px;
+    }
+
+
+    .main-navigation {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    .app-container {
+        padding-top: 35px;
+    }
+
+
+    .vocabulary-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .filter-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .header-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .logo {
+        font-size: 1.05rem;
+    }
+
+
+    .nav-button {
+        padding: 8px 11px;
+
+        font-size: 0.85rem;
+    }
+
+
+    .app-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .section-header h1 {
+        font-size: 1.6rem;
+    }
+
+
+    .vocabulary-controls {
+        padding: 18px;
+    }
+
+
+    .vocabulary-card {
+        padding: 20px;
+    }
+
+}
